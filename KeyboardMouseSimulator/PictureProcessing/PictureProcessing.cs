@@ -95,19 +95,18 @@ namespace KeyboardMouseSimulatorDota2
         /// <summary>
         ///     查找图片，不能镂空
         /// </summary>
-        /// <param name="subPic">截取图像地址</param>
+        /// <param name="subBitmap">原始图像</param>
         /// <param name="parBitmap">对比图像</param>
         /// <param name="searchRect">如果为empty，则默认查找整个图像</param>
         /// <param name="errorRange">容错，单个色值范围内视为正确0~255</param>
         /// <param name="matchRate">图片匹配度，默认90%</param>
         /// <param name="isFindAll">是否查找所有相似的图片</param>
         /// <returns>返回查找到的图片的中心点坐标</returns>
-        public static List<Point> FindPicture(string subPic, Bitmap parBitmap,
+        public static List<Point> FindPicture(Bitmap subBitmap, Bitmap parBitmap,
             Rectangle searchRect = new Rectangle(), byte errorRange = 0,
             double matchRate = 0.9, bool isFindAll = false)
         {
             List<Point> ListPoint = new List<Point>();
-            Bitmap subBitmap = new Bitmap(subPic);
             int subWidth = subBitmap.Width;
             int subHeight = subBitmap.Height;
             int parWidth = parBitmap.Width;

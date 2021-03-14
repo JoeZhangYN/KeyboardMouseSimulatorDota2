@@ -33,13 +33,14 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
     <BaseIntermediateOutputPath>..\..\Temp\</BaseIntermediateOutputPath>
     <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
     <DebugSymbols>true</DebugSymbols>
     <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -57,20 +58,39 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PictureProcessing.cs" />
+    <Compile Include="KeyboardMouse\DriverStageHelper\SendInputHelper.cs" />
+    <Compile Include="KeyboardMouse\DriverStageHelper\WinIO32.cs" />
+    <Compile Include="KeyboardMouse\DriverStageHelper\WinIO64.cs" />
+    <Compile Include="KeyboardMouse\DriverStageHelper\WinRing0.cs" />
+    <Compile Include="PictureProcessing\PictureProcessing.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="KeyboardHook.cs" />
-    <Compile Include="KeyboardMouseSimulateDriverAPI.cs" />
+    <Compile Include="KeyboardMouse\KeyboardHook.cs" />
+    <Compile Include="KeyboardMouse\KeyboardMouseSimulateDriverAPI.cs" />
+    <Compile Include="KeyboardMouse\PressKey\EnumWindowsType.cs" />
+    <Compile Include="KeyboardMouse\PressKey\IPressKey.cs" />
+    <Compile Include="KeyboardMouse\PressKey\PressKeyBySendInput.cs" />
+    <Compile Include="KeyboardMouse\PressKey\PressKeyByWinIO.cs" />
+    <Compile Include="KeyboardMouse\PressKey\PressKeyByWinRing0.cs" />
+    <Compile Include="Picture_Dota2\Resource_Picture.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource_Picture.resx</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetWindowTop.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Picture_Dota2\Resource_Picture.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resource_Picture.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -125,11 +145,15 @@
     <Content Include="Picture_Dota2\关释放.bmp" />
     <Content Include="Picture_Dota2\决斗CD.bmp" />
     <Content Include="Picture_Dota2\刃甲.bmp" />
+    <Content Include="Picture_Dota2\力量腿.bmp" />
     <Content Include="Picture_Dota2\勇气.bmp" />
+    <Content Include="Picture_Dota2\勋章.bmp" />
     <Content Include="Picture_Dota2\吹风CD.bmp" />
     <Content Include="Picture_Dota2\吹风CD完.bmp" />
     <Content Include="Picture_Dota2\天堂.bmp" />
     <Content Include="Picture_Dota2\强攻CD.bmp" />
+    <Content Include="Picture_Dota2\敏捷腿.bmp" />
+    <Content Include="Picture_Dota2\智力腿.bmp" />
     <Content Include="Picture_Dota2\滚标志.bmp" />
     <Content Include="Picture_Dota2\火女QCD.bmp" />
     <Content Include="Picture_Dota2\火女QCD结束.bmp" />
@@ -138,18 +162,28 @@
     <Content Include="Picture_Dota2\火女大CD.bmp" />
     <Content Include="Picture_Dota2\火女大CD结束.bmp" />
     <Content Include="Picture_Dota2\电子狂欢.bmp" />
+    <Content Include="Picture_Dota2\臂章.bmp" />
     <Content Include="Picture_Dota2\超负荷标志.bmp" />
     <Content Include="Picture_Dota2\远斧头.bmp" />
     <Content Include="Picture_Dota2\释放冰封禁制.bmp" />
     <Content Include="Picture_Dota2\释放决斗.bmp" />
     <Content Include="Picture_Dota2\释放出击.bmp" />
     <Content Include="Picture_Dota2\释放天堂.bmp" />
+    <Content Include="Picture_Dota2\释放完震撼大地.bmp" />
     <Content Include="Picture_Dota2\释放强攻.bmp" />
+    <Content Include="Picture_Dota2\释放深渊.bmp" />
     <Content Include="Picture_Dota2\释放球状闪电.bmp" />
     <Content Include="Picture_Dota2\释放电子旋涡.bmp" />
+    <Content Include="Picture_Dota2\释放超强力量.bmp" />
     <Content Include="Picture_Dota2\释放野地奇袭.bmp" />
+    <Content Include="Picture_Dota2\释放弧形闪电.bmp" />
+    <Content Include="Picture_Dota2\释放雷云后弧形闪电.bmp" />
+    <Content Include="Picture_Dota2\释放雷云后雷击.bmp" />
+    <Content Include="Picture_Dota2\释放雷击.bmp" />
+    <Content Include="Picture_Dota2\雷云.bmp" />
     <Content Include="Picture_Dota2\黑黄.bmp" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
